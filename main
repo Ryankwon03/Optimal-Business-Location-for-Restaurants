@@ -7,3 +7,4 @@ df = pd.read_csv("tesla.csv")
 
 print("sungmo babo")
 print('I wanna go home I am very hungry and depressed')
+print("hello world")
