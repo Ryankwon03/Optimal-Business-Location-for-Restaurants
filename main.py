@@ -1,9 +1,7 @@
 import pandas as pd
+import numpy as np
 
 df = pd.read_csv("tesla.csv")
-movies = pd.read_csv("tmdb_5000_movies.csv")
-credits = pd.read_csv("tmdb_5000_credits.csv")
+walmart = pd.read_csv("walmart.csv")
 
-print(df.head())
-print(movies.head())
-print(credits.head())
+print(walmart.head())
