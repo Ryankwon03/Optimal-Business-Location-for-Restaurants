@@ -1,7 +1,8 @@
-import pandas as pd
 import numpy as np
+import pandas as pd
 
-df = pd.read_csv("tesla.csv")
-walmart = pd.read_csv("walmart.csv")
+df = pd.read_csv("walmart.csv")
 
-print(walmart.head())
+print(df.head())
+
+print(df[0:2].T)
