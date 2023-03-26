@@ -7,8 +7,6 @@ import os
 
 
 
-df = pd.read_csv("walmart.csv")
+df = pd.read_csv("Walmart.csv")
 
 print(df.head())
-
-print(df[0:2].T)
