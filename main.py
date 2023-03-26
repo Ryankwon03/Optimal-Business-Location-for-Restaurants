@@ -10,3 +10,4 @@ import os
 df = pd.read_csv("Walmart.csv")
 
 print(df.head())
+
