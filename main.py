@@ -5,9 +5,10 @@ import os
 
 
 
-
-
 df = pd.read_csv("Walmart.csv")
 
-print(df.head())
+#print(df.head()) #checking data format
+#print(df.isnull().sum()) #checking how many null values
 
+
+print(df.describe())
