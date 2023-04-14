@@ -1,6 +1,7 @@
 import requests
 import numpy as np
 import pandas as pd
+import csv
 
 def get_zipcode_from_lat_lng(latitude, longitude):
     api_key = "AIzaSyDeY_8ameEGTbi-yW2z3VEkiVhjyqObVEU" # Replace with your API key
@@ -14,7 +15,45 @@ def get_zipcode_from_lat_lng(latitude, longitude):
     return None
 
 if __name__ == "__main__":
+    zip_codes = {}
     data = pd.read_csv("Crime_Data_from_2020_to_Present.csv")
-    print(data.head())
+    latitude = []
+    longitude = []
     for i in data:
-        
+        if(i == 'LAT'):
+            for j in data[i]:
+                latitude.append(j)
+        if(i == 'LON'):
+            for j in data[i]:
+                longitude.append(j)
+
+
+# Open a new CSV file in write mode
+my_dict = {
+    "name": ["Alice", "Bob", "Charlie"],
+    "age": [25, 30, 35],
+    "gender": ["female", "male", "male"]
+}
+
+# Open a new CSV file in write mode
+with open("my_file.csv", "w", newline="") as csvfile:
+    # Create a CSV writer object
+    writer = csv.writer(csvfile)
+    
+    # Write the header row
+    writer.writerow(my_dict.keys())
+    
+    # Write the data rows
+    for row in zip(*my_dict.values()):
+        writer.writerow(row)
+    
+            
+            
+    for i in range(len(latitude)):
+        print(get_zipcode_from_lat_lng(latitude[i], longitude[i]))
+        zip_codes[str(get_zipcode_from_lat_lng(latitude[i], longitude[i]))] = 0
+    
+    for i in range(len(latitude)):
+        zip_codes[str(get_zipcode_from_lat_lng(latitude[i], longitude[i]))] += 1
+    
+    print(zip_codes)
