@@ -29,14 +29,23 @@ if __name__ == "__main__":
 
 
 # Open a new CSV file in write mode
-x = [1, 2, 3, 4, 5, 6]
-with open("cleaned_crime.csv", "w", newline="") as csvfile:
-    
+my_dict = {
+    "name": ["Alice", "Bob", "Charlie"],
+    "age": [25, 30, 35],
+    "gender": ["female", "male", "male"]
+}
+
+# Open a new CSV file in write mode
+with open("my_file.csv", "w", newline="") as csvfile:
     # Create a CSV writer object
     writer = csv.writer(csvfile)
     
     # Write the header row
-    writer.writerows(x)
+    writer.writerow(my_dict.keys())
+    
+    # Write the data rows
+    for row in zip(*my_dict.values()):
+        writer.writerow(row)
     
             
             
