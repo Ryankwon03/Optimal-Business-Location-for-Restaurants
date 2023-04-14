@@ -26,22 +26,17 @@ if __name__ == "__main__":
         if(i == 'LON'):
             for j in data[i]:
                 longitude.append(j)
-    
-    x = {'900': 110, '901': 130, '932': 1193}
+
 
 # Open a new CSV file in write mode
+x = [1, 2, 3, 4, 5, 6]
 with open("cleaned_crime.csv", "w", newline="") as csvfile:
+    
     # Create a CSV writer object
     writer = csv.writer(csvfile)
     
     # Write the header row
-    writer.writerow(x)
-    print(x.keys())
-    
-    # Write the data rows
-    #for row in zip(x.values()):
-    #    writer.writerow(row)
-    
+    writer.writerows(x)
     
             
             
