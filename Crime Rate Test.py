@@ -4,7 +4,7 @@ import pandas as pd
 import csv
 
 def get_zipcode_from_lat_lng(latitude, longitude):
-    api_key = "AIzaSyAbMQycMkOKUcqOJa0DaZZ9fYOdu3ewcXM" # Replace with your API key
+    api_key = "" # Replace with your API key
     url = f"https://maps.googleapis.com/maps/api/geocode/json?latlng={latitude},{longitude}&key={api_key}"
     response = requests.get(url)
     json_data = response.json()
@@ -30,11 +30,11 @@ if __name__ == "__main__":
     
     for i in range(len(latitude)):
         if(get_zipcode_from_lat_lng(latitude[i], longitude[i]) not in zip_codes):
+            zip_codes[str(get_zipcode_from_lat_lng(latitude[i], longitude[i]))] = 1
             print(get_zipcode_from_lat_lng(latitude[i], longitude[i]), zip_codes[get_zipcode_from_lat_lng(latitude[i], longitude[i])])
-            zip_codes[str(get_zipcode_from_lat_lng(latitude[i], longitude[i]))] = 0
         else:
-            print(get_zipcode_from_lat_lng(latitude[i], longitude[i]))
             zip_codes[str(get_zipcode_from_lat_lng(latitude[i], longitude[i]))] += 1
+            print(get_zipcode_from_lat_lng(latitude[i], longitude[i]), zip_codes[get_zipcode_from_lat_lng(latitude[i], longitude[i])])
     
 # Open a new CSV file in write mode
 with open("cleaned_crime.csv", "w", newline="") as csvfile:
