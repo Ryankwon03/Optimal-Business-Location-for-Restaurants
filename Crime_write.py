@@ -4,7 +4,7 @@ import pandas as pd
 import csv
 
 def get_zipcode_from_lat_lng(latitude, longitude):
-    api_key = "" # Replace with your API key
+    api_key = "AIzaSyDeY_8ameEGTbi-yW2z3VEkiVhjyqObVEU" # Replace with your API key
     url = f"https://maps.googleapis.com/maps/api/geocode/json?latlng={latitude},{longitude}&key={api_key}"
     response = requests.get(url)
     json_data = response.json()
