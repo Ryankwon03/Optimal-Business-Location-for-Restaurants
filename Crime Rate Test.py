@@ -35,11 +35,12 @@ with open("cleaned_crime.csv", "w", newline="") as csvfile:
     writer = csv.writer(csvfile)
     
     # Write the header row
-    writer.writerow(x.keys())
+    writer.writerow(x)
+    print(x.keys())
     
     # Write the data rows
-    for row in zip(x.values()):
-        writer.writerow(row)
+    #for row in zip(x.values()):
+    #    writer.writerow(row)
     
     
             
