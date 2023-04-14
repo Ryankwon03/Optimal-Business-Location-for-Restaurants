@@ -4,7 +4,7 @@ import pandas as pd
 import csv
 
 def get_zipcode_from_lat_lng(latitude, longitude):
-    api_key = "AIzaSyBvt6BhPdQ4TL-s1noQNWra4wVHXte_z4g" # Replace with your API key
+    api_key = "AIzaSyDeY_8ameEGTbi-yW2z3VEkiVhjyqObVEU" # Replace with your API key
     url = f"https://maps.googleapis.com/maps/api/geocode/json?latlng={latitude},{longitude}&key={api_key}"
     response = requests.get(url)
     json_data = response.json()
@@ -26,34 +26,25 @@ if __name__ == "__main__":
         if(i == 'LON'):
             for j in data[i]:
                 longitude.append(j)
-
-
-# Open a new CSV file in write mode
-my_dict = {
-    "name": ["Alice", "Bob", "Charlie"],
-    "age": [25, 30, 35],
-    "gender": ["female", "male", "male"]
-}
-
-# Open a new CSV file in write mode
-with open("my_file.csv", "w", newline="") as csvfile:
-    # Create a CSV writer object
-    writer = csv.writer(csvfile)
     
-    # Write the header row
-    writer.writerow(my_dict.keys())
     
-    # Write the data rows
-    for row in zip(*my_dict.values()):
-        writer.writerow(row)
-    
-            
-            
     for i in range(len(latitude)):
         print(get_zipcode_from_lat_lng(latitude[i], longitude[i]))
         zip_codes[str(get_zipcode_from_lat_lng(latitude[i], longitude[i]))] = 0
     
     for i in range(len(latitude)):
+        print(get_zipcode_from_lat_lng(latitude[i], longitude[i]))
         zip_codes[str(get_zipcode_from_lat_lng(latitude[i], longitude[i]))] += 1
     
-    print(zip_codes)
+# Open a new CSV file in write mode
+with open("cleaned_crime.csv", "w", newline="") as csvfile:
+    # Create a CSV writer object
+    writer = csv.writer(csvfile)
+    
+    # Write the header row
+    cnt = 0
+    for key, value in zip_codes.items():
+        print(cnt)
+        writer.writerow([key, value])
+        cnt = cnt + 1
+    
