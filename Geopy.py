@@ -42,8 +42,3 @@ with open("cleaned_crime.csv", "w", newline="") as csvfile:
         cnt = cnt + 1
 
     
-    
-
-
-
-print(zipcode)
