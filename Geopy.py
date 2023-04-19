@@ -29,6 +29,17 @@ for i in range(len(latitude)):
     else:
         zip_codes[zipcode] += 1
     print(zipcode, zip_codes[zipcode])
+    
+with open("cleaned_crime.csv", "w", newline="") as csvfile:
+    # Create a CSV writer object
+    writer = csv.writer(csvfile)
+    
+    # Write the header row
+    cnt = 0
+    for key, value in zip_codes.items():
+        print(cnt)
+        writer.writerow([key, value])
+        cnt = cnt + 1
 
     
     
