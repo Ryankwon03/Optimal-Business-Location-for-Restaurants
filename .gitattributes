@@ -1,1 +1,4 @@
 Crime_Data_from_2020_to_Present.csv filter=lfs diff=lfs merge=lfs -text
+chainness_point_2021_part1.csv filter=lfs diff=lfs merge=lfs -text
+chainness_point_2021_part2.csv filter=lfs diff=lfs merge=lfs -text
+chainness_point_2021_part3.csv filter=lfs diff=lfs merge=lfs -text
