@@ -3,6 +3,7 @@ from geopy.geocoders import Nominatim
 import numpy as np
 import pandas as pd
 import csv
+import sys
 
 geolocator = Nominatim(user_agent="my_app")
 
@@ -24,11 +25,17 @@ for i in range(len(latitude)):
     address = location.raw['address']
     zipcode = address.get('postcode')
     
-    if(zipcode not in zip_codes):
-        zip_codes[zipcode] = 1
-    else:
-        zip_codes[zipcode] += 1
-    print(zipcode, zip_codes[zipcode])
+    try:
+        if(zipcode not in zip_codes):
+            zip_codes[zipcode] = 1
+        else:
+            zip_codes[zipcode] += 1
+        print(zipcode, zip_codes[zipcode])
+    except:
+        i = i-1
+        continue
+
+    
     
 with open("cleaned_crime.csv", "w", newline="") as csvfile:
     # Create a CSV writer object
