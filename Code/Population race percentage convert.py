@@ -27,7 +27,8 @@ for i in data.keys():
 
 print(data)
 
-        
+data.to_csv("race_convert.csv", index=False)
+
             
             #data[i][j] = float(data[i][j][:-1]) * population[j] / 100.0
 
