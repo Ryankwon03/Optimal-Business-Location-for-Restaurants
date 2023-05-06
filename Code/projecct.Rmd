@@ -1,0 +1,56 @@
+---
+title: "quiz 2"
+author: "Patrick Moon"
+date: "2023-05-06"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+# Load the necessary libraries
+library(RSQLite)
+library(DBI)
+
+# Read the CSV file
+crime1<- read.csv("cleaned_crime1.csv")
+crime2<- read.csv("cleaned_crime2.csv")
+crime6<- read.csv("cleaned_crime6.csv")
+
+head(crime1)
+head(crime2)
+head(crime6)
+
+```
+
+```{r}
+# Create an in-memory SQLite database
+con <- dbConnect(RSQLite::SQLite(), ":memory:")
+
+# Copy the CSV data into the database
+dbWriteTable(con, "crime1", crime1)
+dbWriteTable(con, "crime2", crime2)
+dbWriteTable(con, "crime6", crime6)
+
+sql_query <- "
+SELECT c1.X90037, c1.X974 + c2.X681 + c6.X989 AS total_sum
+FROM crime1 c1
+JOIN crime2 c2 ON c1.X90037 = c2.X90015
+JOIN crime6 c6 ON c1.X90037 = c6.X90006;
+"
+
+# Execute the SQL query and fetch the results
+result <- dbGetQuery(con, sql_query)
+
+# Print the result
+print(result)
+
+# Save the result to a new CSV file
+write.csv(result, "combined_crime.csv", row.names = FALSE)
+
+# Disconnect and clean up
+dbDisconnect(con)
+```
+
