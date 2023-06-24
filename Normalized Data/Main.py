@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import csv
+#import folium
 
 
 df = pd.read_csv("Final_data.csv")
