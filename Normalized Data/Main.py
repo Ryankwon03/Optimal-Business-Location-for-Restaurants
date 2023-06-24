@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 import csv
-#import folium
+import folium
 
 
 df = pd.read_csv("Final_data.csv")
@@ -25,3 +25,5 @@ for idx, row in df.iterrows():
 bestlist = sorted(final_dict, key=final_dict.get, reverse=True)[:3]
 worstlist = sorted(final_dict, key=final_dict.get)[:3]
 
+print(bestlist)
+print(worstlist)
