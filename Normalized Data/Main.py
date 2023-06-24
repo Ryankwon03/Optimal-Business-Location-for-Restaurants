@@ -19,5 +19,8 @@ saved_zip = ""
 for idx, row in df.iterrows():
     #고칠것: sort out top3 & worst3
     final_dict[row['ZipCode']] = round((row['/max - min(pop)']*0.262) + (float(row[country_input].strip("%"))*0.338) + (row['/max-min(employ)']*0.089) - (row['Normalized Crime Rates']*0.127) - (row['Normalized Competitors']*0.184), 2)
-    
-print(final_dict)
+
+
+bestlist = sorted(final_dict, key=final_dict.get, reverse=True)[:3]
+worstlist = sorted(final_dict, key=final_dict.get)[:3]
+
